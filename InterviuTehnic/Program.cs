@@ -61,15 +61,13 @@ namespace InterviuTehnic
                 return;
             }
 
+
           
             HideAndSeek hideAndSeek = new HideAndSeek();
             hideAndSeek.RunProgram(args[0],cheieCriptare,fisierIesire, decriptare);
 
 
-            //hideAndSeek.RunProgram("Test1.txt", "00110101", "Test2.txt",false);
-            //hideAndSeek.Decriptare("fisier2.txt", "00110101","fisier5.txt");
 
-            //hideAndSeek.RunProgram("fisier2.txt", "00110101", "fisier5.txt", true);
 
 
 
