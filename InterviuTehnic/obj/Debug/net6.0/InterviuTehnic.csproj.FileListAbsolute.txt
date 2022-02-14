@@ -4,7 +4,6 @@ C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\bin\Debug\net6.0\Interv
 C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\bin\Debug\net6.0\InterviuTehnic.dll
 C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\bin\Debug\net6.0\ref\InterviuTehnic.dll
 C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\bin\Debug\net6.0\InterviuTehnic.pdb
-C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\obj\Debug\net6.0\InterviuTehnic.csproj.AssemblyReference.cache
 C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\obj\Debug\net6.0\InterviuTehnic.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\obj\Debug\net6.0\InterviuTehnic.AssemblyInfoInputs.cache
 C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\obj\Debug\net6.0\InterviuTehnic.AssemblyInfo.cs
@@ -13,3 +12,4 @@ C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\obj\Debug\net6.0\Interv
 C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\obj\Debug\net6.0\ref\InterviuTehnic.dll
 C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\obj\Debug\net6.0\InterviuTehnic.pdb
 C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\obj\Debug\net6.0\InterviuTehnic.genruntimeconfig.cache
+C:\Users\Cata\source\repos\InterviuTehnic\InterviuTehnic\obj\Debug\net6.0\InterviuTehnic.csproj.AssemblyReference.cache

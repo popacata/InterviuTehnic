@@ -8,21 +8,7 @@ namespace InterviuTehnic
 {
     class HideAndSeek
     {
-        private static string XorIng2(string key, string input)
-        {
 
-            int dec1 = Convert.ToInt32(key, 16);
-            Console.WriteLine(dec1);
-            int dec2 = Convert.ToInt32(input, 16);
-            Console.WriteLine(dec2);
-            int result = dec1 ^ dec2;
-            string hexResult = result.ToString("X");
-
-          
-
-            Console.WriteLine(hexResult);
-            return hexResult;
-        }
 
 
         private static string XorIng(string key, string input)
@@ -40,121 +26,47 @@ namespace InterviuTehnic
 
 
 
-        private string ReturnInputFile(string InputFileName)
+
+
+        public void CriptareFisier(string InputFileName, string Key, string outputFileName)
         {
+
             try
             {
-                if (InputFileName == String.Empty)
+                using (StreamReader reader = new StreamReader(InputFileName))
                 {
-                    Console.WriteLine("Input file name not specified");
-                    return null;
+                    try
+                    {
+                        using (StreamWriter fileToWrite = new StreamWriter(outputFileName))
+                        {
+                            try
+                            {
+                                fileToWrite.Write(XorIng(Key, reader.ReadToEnd()));
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Ceva nu a functionat");
+                            }
+
+                            Console.WriteLine("Operation completed successfully!");
+                        }
+                    }
+                    catch(Exception )
+                    {
+                        Console.WriteLine("Operation failed");
+                    }
+
                 }
-                if (!File.Exists(InputFileName))
-                {
-                    Console.WriteLine($"Invalid file name {InputFileName}");
-                }
-                else 
-                {
-                    return InputFileName; 
-                }
-            }
-            catch (FileNotFoundException e)
-            {
-                Console.WriteLine($"The file was not found: '{e}'");
+
             }
 
-            catch (IOException e)
+            catch(FileNotFoundException)
             {
-                Console.WriteLine($"Invalid file name '{e}'");//cauta metoda in clasa Exception pentru eroarea specificata si daca nu exista foloseste IOException + mesajul de eroare specificat in enunt.
+                Console.WriteLine($"File not found {InputFileName}");
             }
-
-            return InputFileName;
-        }
-
-        private string KeyToEncrypt(string Key)
-        {
-            try
+            catch(Exception)
             {
-
-
-                if (Key == String.Empty)
-                {
-                    Console.WriteLine("Key not specified!");
-                    return null;
-                }
-                if (Key.Length < 2)
-                {
-                    Console.WriteLine("Invalid key format!");
-                    return null;
-                }
-                else
-                { return Key; }
-            }
-
-            catch (FileNotFoundException e)
-            {
-                Console.WriteLine($"Key not specified: '{e}'");
-                if (Key == String.Empty)
-                {
-                    Console.WriteLine("Key not specified!");
-                    return null;
-                }
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return Key;
-        }
-
-        private string OutputFileName(string FileToSave)
-        {
-            try
-            {
-                Console.WriteLine(FileToSave);// cauta despre try implementare
-            }
-            catch (FileNotFoundException e)
-            {
-                Console.WriteLine($"The file was not found: '{e}'");
-            }
-
-            catch (IOException e)
-            {
-                Console.WriteLine($"Invalid file name '{e}'");//cauta metoda in clasa Exception pentru eroarea specificata si daca nu exista foloseste IOException + mesajul de eroare specificat in enunt.
-            }
-
-            return FileToSave;
-        }
-
-        private bool DecriptFile(string FileToSave)
-        {
-            return true;
-        }
-
-        private string Crc(bool Decriptare)
-        {
-            if (Decriptare == true)
-            {
-                return "";
-            }
-            else
-            {
-                return "Nu este solicitate decriptare";
-            }
-        }
-
-
-
-        public void CriptareFisier(string InputFileName, string Key, string outputFileName) 
-        {
-            //Console.WriteLine(ReturnInputFile(InputFileName));
-            using (StreamReader reader = new StreamReader(ReturnInputFile(InputFileName)))
-            {
-                using (StreamWriter fileToWrite = new StreamWriter(OutputFileName(outputFileName)))
-                {
-                    // Console.WriteLine(XorIng(KeyToEncrypt(Key), ReturnInputFile(InputFileName)));
-                    fileToWrite.Write(XorIng(KeyToEncrypt(Key),reader.ReadToEnd()));
-                }
+                Console.WriteLine("Operation failed");
             }
         }
 
@@ -162,12 +74,20 @@ namespace InterviuTehnic
 
         public void DecriptareFisier(string InputFileName, string Key,  string outputFileName)
         {
-            using (StreamReader reader = new StreamReader(ReturnInputFile(InputFileName)))
+            using (StreamReader reader = new StreamReader(InputFileName))
             {
-                using (StreamWriter fileToWrite = new StreamWriter( OutputFileName(outputFileName)))
+                using (StreamWriter fileToWrite = new StreamWriter(outputFileName))
                 {
-                    //Console.WriteLine(XorIng(KeyToEncrypt(Key), ReturnInputFile(InputFileName)));
-                    fileToWrite.Write(XorIng(KeyToEncrypt(Key), reader.ReadToEnd()));
+                    try
+                    {
+                        fileToWrite.Write(XorIng(Key, reader.ReadToEnd()));
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Ceva nu a functionat");
+                    }
+
+                    Console.WriteLine("Operation completed successfully!");
 
                 }
             }
@@ -181,16 +101,14 @@ namespace InterviuTehnic
         {
             if (d == false)
             {
-                CriptareFisier(inputFile, key, outputFile);
+                CriptareFisier(inputFile, key, outputFile + ".enc");
             }
             if (d == true)
             {
-                DecriptareFisier(inputFile, key, outputFile);
+                DecriptareFisier(inputFile, key, outputFile + ".dec");
             }
 
         }
-
-
 
     }
 }
