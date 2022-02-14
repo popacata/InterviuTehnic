@@ -1,0 +1,45 @@
+1.
+•	o interogare care sa aduca toate companiile (Customers) care au mai mult de 10 comenzi (Order) in anul curent.
+
+
+SELECT Customer.CompanyName, 
+COUNT (Order.OrderID) 
+FROM Customer 
+LEFT JOIN ORDER ON Customer.CustomerID = Order.CustomerID 
+GROUP BY Customer.CompanyName, YEAR(OrderDate) 
+HAVING COUNT (Order.OrderID)>10
+AND YEAR (Order.OrderDate) =2022
+
+
+
+
+2.
+•	o interogare care sa intoarca cel mai vandut produs (Product). Cantitatea vanduta pe o comanda se gaseste in Order_Detail.Quantity. Nu se va utiliza UnitsOnOrder.
+
+
+
+SELECT Product.ProductID,
+SUM(Order_Detail.Quantity) Total_Quantity
+FROM Order_Detail
+LEFT JOIN Product ON Order_Detail.ProductID=Product.ProductID
+GROUP BY Product.ProductID
+ORDER BY Total_Quantity DESC 
+LIMIT 1
+
+
+
+3.
+•	o interogare care sa aduca angajatii (Employee) ce sunt asignati pe orice teritoriu (Teritory) din regiunea cu RegionId = 1 si cei care nu sunt asignati pe nici un teritoriu. 
+
+
+
+SELECT Employee.EmployeeID, 
+EmployeeTerritory.TerritoryID, 
+Territory.RegionID
+FROM Employee
+LEFT JOIN EmployeeTerritory
+ON Employee.EmployeeID =EmployeeTerritory.EmployeeID 
+LEFT JOIN Territory
+ON Territory.TeritoryID = EmployeeTerritory.TeritoryID
+WHERE Territory.RegionID = 1
+OR EmployeeTerritory.TeritoryID IS NULL
